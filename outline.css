@@ -1,0 +1,72 @@
+#scibloger_outline_wrapper{
+  position:fixed;
+  vertical-align: middle;
+  top: 100px;
+
+  right: -10px;
+  width: 30px;
+}
+#scibloger_outline_wrapper table, tbody, tr, td{
+  border:0px;
+}
+#scibloger_outline_wrapper div.trigger{
+  height: 30px;
+  width: 30px;
+  background: rgba(0, 0, 0, 0.2);
+  border-radius:50%;
+  text-align: center;
+  line-height: 30px;
+  font-size: 12px;
+
+  visibility: visible;
+}
+#scibloger_outline_wrapper div.content{
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  border-radius: 15px;
+  padding: 10px 30px 10px 20px;
+  line-height: 1.1;
+  
+  max-height: 400px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-base-color:rgba(0, 0, 0, 0.8);
+}
+#scibloger_outline_wrapper:hover{
+  right: 0px;
+  width: auto;
+}
+#scibloger_outline_wrapper:hover div.trigger{
+  visibility: collapse;
+}
+
+/************************
+    outline_content
+************************/
+a.scibloger_outline_h3, 
+a.scibloger_outline_h4, 
+a.scibloger_outline_h5,
+a.scibloger_outline_h6{
+  color: #ffffff;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+a.scibloger_outline_h3{
+  padding-left: 0em;
+  font-size: 16px;
+
+}
+a.scibloger_outline_h4{
+  padding-left: 1em;
+  font-size: 14px;
+}
+a.scibloger_outline_h5{
+  padding-left: 2em;
+  font-size: 12px;
+}
+a.scibloger_outline_h6{
+  padding-left: 3em;
+  font-size: 12px;
+}
+
