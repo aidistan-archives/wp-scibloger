@@ -60,6 +60,7 @@ class ScienceBlogHelper {
     // Load modules
     define('BASE_PATH', dirname(__FILE__));
     require BASE_PATH . '/mathjax.php';
+    require BASE_PATH . '/outline.php';
 
     // Admin actions
     if ( is_admin() ){
@@ -72,7 +73,8 @@ class ScienceBlogHelper {
     }
 
     // Init modules
-    $this -> mMathJax  = new SciBloger_MathJax();
+    $this -> mMathJax = new SciBloger_MathJax();
+    $this -> mOutline = new SciBloger_Outline();
   }
 
   function init_options() {
