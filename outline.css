@@ -1,10 +1,9 @@
 #scibloger_outline_wrapper{
   position:fixed;
-  vertical-align: middle;
-  top: 100px;
+  right: 0px;
+  bottom: 10%;
 
-  right: -10px;
-  width: 30px;
+  width: 40px;
 }
 #scibloger_outline_wrapper table, tbody, tr, td{
   border:0px;
@@ -33,7 +32,6 @@
   scrollbar-base-color:rgba(0, 0, 0, 0.8);
 }
 #scibloger_outline_wrapper:hover{
-  right: 0px;
   width: auto;
 }
 #scibloger_outline_wrapper:hover div.trigger{

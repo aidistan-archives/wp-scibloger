@@ -41,7 +41,7 @@ class SciBloger_Outline {
   function add_outline() {
     ?>
     <div id="scibloger_outline_wrapper">
-      <table><tr><td width="40px">
+      <table><tr><td width="40px" style="vertical-align: bottom;">
         <div class="trigger">&lt;</div>
       </td><td>
         <div class="content"><?php echo $this -> outline_content; ?>
