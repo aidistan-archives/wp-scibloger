@@ -165,14 +165,14 @@ class ScienceBlogHelper {
 
     add_settings_section(
       'option_section_outline', 
-      'Outline', 
+      'Post outline', 
       array($this, 'section_callback_outline'), 
       self::MENU_SLUG
     );
     
     add_settings_field(
       self::OPTION_OUTLINE,
-      'Outline generator',
+      'Generate by default',
       array( $this, 'setting_callback_outline'),
       self::MENU_SLUG,
       'option_section_outline'
@@ -232,20 +232,21 @@ class ScienceBlogHelper {
 
   function section_callback_outline() {
     ?>
-    Posts on science usually are long works. SciBloger's outline generator will help you a lot as long as headers were set properly.
-    <br />
-    In most wordpress themes, site titles are <i>h1</i> and post titles <i>h2</i>. It is highly recommended to make the top level in your post <i>h3</i>.
+    Posts on science usually are long works. SciBloger's Outline will help you generate a useful outline as long as headers were set properly.
+    In most wordpress themes, site titles are <i>h1</i> and post titles <i>h2</i>. It is highly recommended to make <b>h3</b> the top level in your post.
+    Shortcodes are also supported to use Outline more flexible by overwritting the defaults: <br />
+    <p style="text-align:center;">[scibloger_outline show="(yse/no, depends on your choose here)" right="10px" top="20%"]</p>
     <?php
   }
 
   function setting_callback_outline() {
     ?>
-    <input name="<?php echo self::OPTION_OUTLINE ?>" type="radio" value="on"
-      <?php if(get_option( self::OPTION_OUTLINE ) =='on') echo 'checked'; ?>
-      > On</input><br />
-    <input name="<?php echo self::OPTION_OUTLINE ?>" type="radio" value="off"
-      <?php if(get_option( self::OPTION_OUTLINE ) =='off') echo 'checked'; ?>
-      > Off</input><br />
+    <input name="<?php echo self::OPTION_OUTLINE ?>" type="radio" value="yes"
+      <?php if(get_option( self::OPTION_OUTLINE ) =='yes') echo 'checked'; ?>
+      > Yes</input><br />
+    <input name="<?php echo self::OPTION_OUTLINE ?>" type="radio" value="no"
+      <?php if(get_option( self::OPTION_OUTLINE ) =='no') echo 'checked'; ?>
+      > No</input><br />
     <?php
   }
 }
