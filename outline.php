@@ -8,6 +8,7 @@ class SciBloger_Outline {
   const MENU_SLUG  = 'scibloger_outline_page';
 
   var $outline_content = "";
+  var $outline_stack   = array();
 
   function __construct() {
     if ( get_option( ScienceBlogHelper::OPTION_OUTLINE ) == 'on' )
@@ -35,14 +36,48 @@ class SciBloger_Outline {
       return $content;
     } else {
       // Otherwise, need to create outline
-      $heads = array();
+      $list_items = array();
+      array_push($this -> outline_stack, '2');
       for($i = 0; $i < count($mat[0]); $i++) {
-        array_push($heads, '<a href="#scibloger_outline_a'.$i.'" class="scibloger_outline_h'.$mat[1][$i].'">'.$mat[2][$i].'</a><br />');
+        // Add list content
+        array_push($list_items, 
+          $this -> do_outline_stack($mat[1][$i], false) . 
+          '<a href="#scibloger_outline_a'.$i.'">'.$mat[2][$i].'</a>');
+
+        // Replace post content
         $content = str_replace($mat[0][$i], $mat[0][$i].'<a name="scibloger_outline_a'.$i.'"></a>', $content);
       }
-      $this -> outline_content = "\n<!-- SciBloger Outline start-->\n".join("\n", $heads)."\n<!-- SciBloger Outline end-->\n";
+      array_push($list_items, $this -> do_outline_stack('2', true));
+
+      $this -> outline_content = "\n<!-- SciBloger Outline start-->\n".join("\n", $list_items)."\n<!-- SciBloger Outline end-->\n";
       return $content;
     }
+  }
+
+  function do_outline_stack($l, $end_of_stack) {
+    $str = '';
+    if(end($this -> outline_stack) < $l){
+      if(end($this -> outline_stack) == '2')
+        $str .= '<ul class="root"><li>';
+      else
+        $str .= '<ul class="sub"><li>';
+      array_push($this -> outline_stack, $l);
+    } elseif (end($this -> outline_stack) == $l){
+      $str .= '</li><li>';
+    } else {
+      while(end($this -> outline_stack) > $l){
+        $str .='</li></ul>';
+        array_pop($this -> outline_stack);
+      }
+      if(end($this -> outline_stack) < $l){
+        $str .= '<ul class="sub"><li>';
+        array_push($this -> outline_stack, $l);
+      } elseif (end($this -> outline_stack) == $l){
+        if(!$end_of_stack)
+          $str .= '</li><li>';
+      }
+    }
+    return $str;
   }
 
   function add_outline() {
@@ -51,12 +86,8 @@ class SciBloger_Outline {
 
     ?>
     <div id="scibloger_outline_wrapper">
-      <table><tr><td width="40px" style="vertical-align: bottom;">
-        <div class="trigger">&lt;</div>
-      </td><td>
-        <div class="content"><?php echo $this -> outline_content; ?>
-        </div>
-      </td></tr></table>
+      <span><div class="trigger">&lt;</div></span>
+      <span><div class="content"><?php echo $this -> outline_content; ?></div></span>
     </div>
     <?php
   }
