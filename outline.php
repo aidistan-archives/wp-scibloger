@@ -19,10 +19,16 @@ class SciBloger_Outline {
     $this -> mYes = (get_option( ScienceBlogHelper::OPTION_OUTLINE ) == 'yes');
 
     // Actions & filters by order
+    add_action( 'wp', array($this, 'check_single') );
     add_action( 'wp_enqueue_scripts', array($this, 'register_style') );
     add_shortcode( 'scibloger_outline', array($this, 'parse_shortcode') );
     add_filter( 'the_content', array($this, 'add_header_anchors'), 500);
     add_action( 'wp_footer', array($this, 'add_outline') );
+  }
+
+  function check_single() {
+    if(!is_single())
+      $this -> mYes = 'no';
   }
 
   function register_style() {
@@ -47,7 +53,7 @@ class SciBloger_Outline {
 
   function add_header_anchors($content) {
     // Off
-    if(!$this -> mYes)
+    if($this -> mYes != 'yes')
       return $content;
 
     // Main regexp
