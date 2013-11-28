@@ -28,17 +28,27 @@ class SciBloger_Outline {
   }
 
   function add_content_anchors($content) {
-    $heads = array();
     preg_match_all('/<h(\d)[^>]*>(.*)<\/h\d>/isU', $content, $mat);
-    for($i = 0; $i < count($mat[0]); $i++) {
-      array_push($heads, '<a href="#scibloger_outline_a'.$i.'" class="scibloger_outline_h'.$mat[1][$i].'">'.$mat[2][$i].'</a><br />');
-      $content = str_replace($mat[0][$i], $mat[0][$i].'<a name="scibloger_outline_a'.$i.'"></a>', $content);
+
+    if ( count($mat[0]) <= 1) {
+      // If no more than one header
+      return $content;
+    } else {
+      // Otherwise, need to create outline
+      $heads = array();
+      for($i = 0; $i < count($mat[0]); $i++) {
+        array_push($heads, '<a href="#scibloger_outline_a'.$i.'" class="scibloger_outline_h'.$mat[1][$i].'">'.$mat[2][$i].'</a><br />');
+        $content = str_replace($mat[0][$i], $mat[0][$i].'<a name="scibloger_outline_a'.$i.'"></a>', $content);
+      }
+      $this -> outline_content = "\n<!-- SciBloger Outline start-->\n".join("\n", $heads)."\n<!-- SciBloger Outline end-->\n";
+      return $content;
     }
-    $this -> outline_content = "\n<!-- SciBloger Outline start-->\n".join("\n", $heads)."\n<!-- SciBloger Outline end-->\n";
-    return $content;
   }
 
   function add_outline() {
+    if( $this -> outline_content == "")
+      return;
+
     ?>
     <div id="scibloger_outline_wrapper">
       <table><tr><td width="40px" style="vertical-align: bottom;">
