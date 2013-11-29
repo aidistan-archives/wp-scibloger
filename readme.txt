@@ -1,24 +1,86 @@
 === aidi-wp-scibloger ===
 Contributors: aidistan
 Donate link: http://www.crcf.org.cn/1030/juankuan.asp
-Tags: post, content, latex
+Tags: science, helper, post, content, latex
 Requires at least: 3.0.1
 Tested up to: 3.5.2
 Stable tag: 3.5.2
 License: MIT License
 
-A WordPress plugin for science blog writer.
-
+A WordPress plugin for science blog writer, providing LaTeX supporting, post outline generation function.
 
 == Description ==
 
-A WordPress plugin for science blog writer. Supporting following features by now:
+This plugin aims at helping you build blogs and writing posts on science.
 
-* MathJax display
-* Content outline
+= Main features =
 
-In order to get new features, you could contribute to it directly on Github or contact me (also on Github please).
+A list of features provided by now,
 
+* LaTeX Support
+* Post Outline Generation
+
+= LaTeX Support =
+
+This function is realised by importing copy of **MathJax**, an open source JavaScript display engine for mathematics that works in all browsers, from their CDN Service.
+
+Simply use \\(...\\) to wrap your in-line math or \\[...\\] to wrap your equations. For more info, please visit MathJax [Homepage](http://www.mathjax.org/) or [Documents](http://docs.mathjax.org/en/latest/).
+
+= Outline Generation =
+
+Posts on science usually are long works. SciBloger will help you generate a useful outline as long as headers were set properly: making h3 the top level in your post; h4s, h5s, h6s follows by order.
+
+Shortcode is also supported to generate outline more flexible:
+
+[scibloger_outline show="yes" right="10px" top="20%"]
+
+= Need more features? =
+
+In order to get new features, you could contribute to it directly on Github or contact me ([aidistan@live.cn](mailto:aidistan@live.cn)).
+
+== Installation ==
+
+= Install latest stable by wordpress =
+
+* Select "Installed Plugins" in "Plugins" menu
+* Search "scibloger"
+* Follow the instructions to install it.
+
+= Install stable by hand =
+
+* Download any stable version zip from WordPress or [the stables page in Github](https://github.com/aidistan/aidi-wp-scibloger/tree/master/stables).
+* Unzip it
+* Put the folder under path-to-your-wordpress/wp-content/plugins/
+
+= Install development by hand =
+
+* Go to [the project page in Github](https://github.com/aidistan/aidi-wp-scibloger), download all files by clickling "Download ZIP".
+* The same to step 2 and 3 in "Install stable by hand".
+
+== Frequently Asked Questions ==
+
+No questions asked by now. Any is welcome :)
+
+Contact me by email which listed at the end of Description section.
 
 == Screenshots ==
 
+1. LaTeX equation
+
+2. Generated outline
+
+== Changelog ==
+
+= 0.2.1 =
+Improve the styles used in Outline module.
+
+= 0.2.0 =
+Add outline generation function.
+
+= 0.1.0 =
+
+Start version of SciBloger, only containing LaTeX support.
+
+== Upgrade Notice ==
+
+Nothing to worry about.

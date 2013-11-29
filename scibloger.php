@@ -6,7 +6,7 @@
 Plugin Name: Science Blog Helper
 Plugin URI: https://github.com/aidistan/aidi-wp-helper
 Description: A WordPress plugin for science blog writer.
-Version: 0.1
+Version: 0.2.1
 Author: aidistan
 Author URI: http://aidi.no-ip.org
 
@@ -48,7 +48,6 @@ class ScienceBlogHelper {
   const OPTION_OUTLINE = 'scibloger_outline';
 
   // Member
-  var $mVerion = 'v0.1';
   var $mMathJax;
   var $mOutline;
 
@@ -119,7 +118,7 @@ class ScienceBlogHelper {
   function create_plugin_settings_page() {
     ?>
     <div class="wrap">
-      <h2><b>Sci</b>ence <b>Blog</b> Help<b>er</b> <small><?php echo $this->mVerion ?></small></h2>
+      <h2><b>Sci</b>ence <b>Blog</b> Help<b>er</b></h2>
       <form method="post" action="options.php">
         <?php
         settings_fields( self::OPTION_GROUP );
@@ -150,7 +149,7 @@ class ScienceBlogHelper {
 
     add_settings_section(
       'option_section_mathjax', 
-      'MathJax', 
+      'LaTeX Support', 
       array($this, 'section_callback_mathjax'), 
       self::MENU_SLUG
     );
@@ -165,7 +164,7 @@ class ScienceBlogHelper {
 
     add_settings_section(
       'option_section_outline', 
-      'Post outline', 
+      'Outline Generation', 
       array($this, 'section_callback_outline'), 
       self::MENU_SLUG
     );
@@ -235,7 +234,7 @@ class ScienceBlogHelper {
     Posts on science usually are long works. SciBloger's Outline will help you generate a useful outline as long as headers were set properly.
     In most wordpress themes, site titles are <i>h1</i> and post titles <i>h2</i>. It is highly recommended to make <b>h3</b> the top level in your post.
     Shortcodes are also supported to use Outline more flexible by overwritting the defaults: <br />
-    <p style="text-align:center;">[scibloger_outline show="(yse/no, depends on your choose here)" right="10px" top="20%"]</p>
+    <p style="text-align:center;">[scibloger_outline show="(yes/no, depends on your choose here)" right="10px" top="20%"]</p>
     <?php
   }
 
