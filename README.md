@@ -1,11 +1,26 @@
-# Science Blog Helper
+# **Sci**ence **Blog** Help**er**
 
 * Project name: aidi-wp-scibloger
-* WordPress plugin name: Science Blog Helper
-* Plugin name for short: SciBloger
+* Current status: **Maintaining**
+* Start date: Nov 11, 2013
+* Useful resources
+	* [Github page](https://github.com/aidistan/aidi-wp-scibloger)
+	* [Plugin page](http://aidistan.github.io/aidi-wp-scibloger)
+	* [Plugin page on WordPress](http://wordpress.org/plugins/scibloger/)
+	* [SVN repository](http://plugins.svn.wordpress.org/scibloger/)
 
-A WordPress plugin for science blog writer. Please refer to [readme.txt](readme.txt) for more infos about the plugin.
 
-This git repository updates more frequently, while the SVN repository only updates when a new stable released.
+## Description
 
-For contributors to get start, learn the layout of a WordPress plugin by reading [this post](http://make.wordpress.org/plugins/2012/06/09/the-plugins-directory-and-readme-txt-files/). 
+Intended to help people build blogs and write posts on science.
+Refer to [readme.txt](readme.txt), a standard WordPress plugin README, for more info.
+
+
+## Compared to SVN
+
+This git repository updates more frequently, while the SVN repository only used when a new stable released.
+
+
+## For contributors
+
+To get start, learn the layout of a WordPress plugin by reading [this post](http://make.wordpress.org/plugins/2012/06/09/the-plugins-directory-and-readme-txt-files/). 

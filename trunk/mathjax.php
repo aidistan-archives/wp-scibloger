@@ -13,11 +13,13 @@ class SciBloger_MathJax {
     if ( get_option( ScienceBlogHelper::OPTION_MATHJAX ) == 'on' )
       add_action( 'wp_head', array($this, 'insert_js_script' ), 10);
 
-    // Admin actions
+    /* No extra settings by now
+    // Settings
     if ( is_admin() && get_option( ScienceBlogHelper::OPTION_MODE ) == 'maximal' ){
       add_action( 'admin_menu', array($this, 'add_settings_page') );
-      add_action( 'admin_init', array($this, 'init_settings_page') );  
+      add_action( 'admin_init', array($this, 'init_settings_page') );
     }
+    */
   }
   
   // Insert MathJax script
@@ -37,12 +39,12 @@ class SciBloger_MathJax {
   }
 
   function create_settings_page() {
-    echo 'Under construction.';
+  
   }
 
   function init_settings_page() {
-
   }
+
 }
 
 ?>

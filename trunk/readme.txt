@@ -2,12 +2,12 @@
 Contributors: aidistan
 Donate link: http://www.crcf.org.cn/1030/juankuan.asp
 Tags: scibloger, science, helper, post, content, latex
-Requires at least: 3.0.1
-Tested up to: 3.5.2
+Requires at least: 3.3
+Tested up to: 3.7.1
 Stable tag: 0.2.3
 License: MIT License
 
-A WordPress plugin for science blog writer, providing functions like LaTeX supporting and post outline generation.
+Intended to help people build blogs and write posts on science. Provide functions like LaTeX support, post outline generation and so on.
 
 == Description ==
 

@@ -42,7 +42,7 @@ class ScienceBlogHelper {
   // Constants
   const MENU_SLUG      = 'scibloger_page';
 
-  const OPTION_GROUP   = 'scibloger_option_group';
+  const OPTION_GROUP   = 'scibloger_options';
   const OPTION_MODE    = 'scibloger_mode';
   const OPTION_MATHJAX = 'scibloger_mathjax';
   const OPTION_OUTLINE = 'scibloger_outline';
@@ -184,7 +184,7 @@ class ScienceBlogHelper {
 
   function section_callback_main() {
     ?>
-    Intended to help people build blogs on science and write more readable posts.
+    <p>Intended to help people build blogs and write posts on science.</p>
     <?php
   }
 
@@ -197,24 +197,30 @@ class ScienceBlogHelper {
       <?php if(get_option( self::OPTION_MODE ) =='maximal') echo 'checked'; ?>
       > Maximal</input><br />
 
-    For the greatest convenience, SciBloger follows "Convention over Configuration". 
-    Least configs to make SciBloger work are shown in "Minimal" mode.
-    To view and modify all settings, change to "Maximal" mode please.<br />
-    <b>Notice</b>: Setting modified in maximal mode will still have effects in minimal mode.
+    <p>For the greatest convenience, SciBloger follows "Convention over Configuration". 
+    Least configs to make things rock are shown in "Minimal" mode.
+    To view and modify all settings, change to "Maximal" mode please.</p>
+    <p><b>Notice</b>: Setting modified in maximal mode will still have effects in minimal mode.</p>
     <?php
   }
 
   function section_callback_mathjax() {
     $this -> mMathJax -> insert_js_script();
     ?>
-    MathJax is an open source JavaScript display engine for mathematics that works in all browsers. 
-    Following are two simple demos. For more info, please visit MathJax <a href="http://www.mathjax.org/" target="_blank">Homepage</a> 
-    or <a href="http://docs.mathjax.org/en/latest/" target="_blank">Documents</a>.
-    <br/>
+    <p>This function is realised by importing copy of **MathJax**, an open source JavaScript display engine for mathematics that works in all browsers, from their CDN Service.
+    Following are two simple use cases:</p>
     <ol>
-      <li><b>\<b></b>(...\<b></b>)</b> for in-line math: \( E = mc^2 \)</li>
-      <li><b>\<b></b>[...\<b></b>]</b> or <b>$<b></b>$...$<b></b>$</b> for equations: $$ e^{\pi i} + 1 = 0 $$</li>
+      <li><b>\<b></b>(...\<b></b>)</b> for in-line math: \( E = mc^2 \) and \( e^{\pi i} + 1 = 0 \)</li>
+      <li><b>\<b></b>[...\<b></b>]</b> or <b>$<b></b>$...$<b></b>$</b> for equations: 
+        $$\mathbf{X} \sim \mathcal{N} (\boldsymbol\mu, \mathbf\Sigma) :
+        f_{\mathbf{X}}\left(x_1,...,x_k\right) = 
+        \frac{1}{\sqrt{(2\pi)^k |\mathbf\Sigma|}} \: 
+        \exp^{-\frac{1}{2}(\mathbf{x}-\boldsymbol\mu)^T \mathbf\Sigma^{-1} (\mathbf{x}-\boldsymbol\mu)}$$
+      </li>
     </ol>
+    <p>For more help, please visit 
+    MathJax <a href="http://www.mathjax.org/" target="_blank">Homepage</a> 
+    or <a href="http://docs.mathjax.org/en/latest/" target="_blank">Documents</a>.</p>
     <?php
   }
 
@@ -231,9 +237,8 @@ class ScienceBlogHelper {
 
   function section_callback_outline() {
     ?>
-    Posts on science usually are long works. SciBloger's Outline will help you generate a useful outline as long as headers were set properly.
-    In most wordpress themes, site titles are <i>h1</i> and post titles <i>h2</i>. It is highly recommended to make <b>h3</b> the top level in your post.
-    Shortcodes are also supported to use Outline more flexible by overwritting the defaults: <br />
+    <p>Posts on science usually are long works. SciBloger will help you generate a useful outline as long as headers were set properly: making h3 the top level in your post; h4s, h5s, h6s follows by order.
+    Shortcodes are also supported to use Outline more flexible by overwritting the defaults:</p>
     <p style="text-align:center;">[scibloger_outline show="(yes/no, depends on your choose here)" right="10px" top="20%"]</p>
     <?php
   }
