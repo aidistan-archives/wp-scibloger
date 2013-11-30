@@ -6,7 +6,7 @@
 Plugin Name: Science Blog Helper
 Plugin URI: http://aidistan.github.io/aidi-wp-scibloger/
 Description: A WordPress plugin for science blog writer.
-Version: 0.2.3
+Version: 0.2.4
 Author: aidistan
 Author URI: http://aidi.no-ip.org
 
