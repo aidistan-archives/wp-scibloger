@@ -64,9 +64,14 @@ No question by now.
 
 1. LaTeX equation
 
-2. Generated outline
+2. Outline basic style
+
+3. Outline metro style
 
 == Changelog ==
+
+= 0.2.4 =
+* Add a theme option for Outline in Maximal mode.
 
 = 0.2.3 =
 * Fix a severe bug in Outline.

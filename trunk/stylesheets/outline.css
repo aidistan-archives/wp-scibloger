@@ -1,4 +1,4 @@
-/****** Basics ******/
+/* ---Wrapper--- */
 
 #scibloger_outline_wrapper{
   position:fixed;
@@ -9,9 +9,11 @@
   height: 30px;
   width: 30px;
   border-radius:50%;
+
+  font-size: 16px;
+  font-weight: bold;
   text-align: center;
   line-height: 30px;
-  font-size: 12px;
 
   /* Animation */
   visibility: visible;
@@ -20,7 +22,7 @@
   visibility: collapse;
 }
 
-/****** Items ******/
+/* ---Items--- */
 
 #scibloger_outline_wrapper li {
   float: none;
@@ -46,10 +48,10 @@
   padding: 0.05em 0.8em 0.05em 0.8em;
 }
 #scibloger_outline_wrapper a:hover{
-  background: rgba(0,0,0,0.2); 
+  background: rgba(0,0,0,0.1); 
 }
 
-/****** Lists ******/
+/* ---Lists--- */
 
 #scibloger_outline_wrapper ul{
   /* Overwrite appearance */
@@ -86,20 +88,8 @@
   transition: transform 0.1s ease-out;
 }
 
-#scibloger_outline_wrapper:hover ul.l1 {
-  right: 0px;
-  top: 0px;
-
-  z-index: 2; 
-
-  -moz-transform: scaleY(1);
-  -ms-transform: scaleY(1);
-  -o-transform: scaleY(1);
-  -webkit-transform: scaleY(1);
-  transform: scaleY(1);
-}
-
 #scibloger_outline_wrapper ul > li > a {
+  color: rgba(255, 255, 255);
   -moz-transition: color 0.1s ease-out;
   -ms-transition: color 0.1s ease-out;
   -o-transition: color 0.1s ease-out;
@@ -114,8 +104,8 @@
   transition: color 0.1s ease-in;
 }
 
-#scibloger_outline_wrapper li:hover > ul{
-  right: 20px;
+#scibloger_outline_wrapper:hover ul.l1 {
+  right: 0px;
   top: 0px;
 
   -moz-transform: scaleY(1);
@@ -125,51 +115,15 @@
   transform: scaleY(1);
 }
 
-#scibloger_outline_wrapper li:hover > ul.l2{
-  z-index: 3;
-  -moz-transition: background 0.1s ease-out;
-  -ms-transition: background 0.1s ease-out;
-  -o-transition: background 0.1s ease-out;
-  -webkit-transition: background 0.1s ease-out;
-  transition: background 0.1s ease-out;
-}
-#scibloger_outline_wrapper li > ul.l2:hover {
-  -moz-transition: background 0.1s ease-in;
-  -ms-transition: background 0.1s ease-in;
-  -o-transition: background 0.1s ease-in;
-  -webkit-transition: background 0.1s ease-in;
-  transition: background 0.1s ease-in;
-}
+#scibloger_outline_wrapper li:hover > ul{
+  right: 100%;
+  top: -5px;
+  margin-right: -5px;
 
-#scibloger_outline_wrapper li:hover > ul.l3{
-  z-index: 4;
-  -moz-transition: background 0.1s ease-out;
-  -ms-transition: background 0.1s ease-out;
-  -o-transition: background 0.1s ease-out;
-  -webkit-transition: background 0.1s ease-out;
-  transition: background 0.1s ease-out;
-}
-#scibloger_outline_wrapper li > ul.l3:hover {
-  -moz-transition: background 0.1s ease-in;
-  -ms-transition: background 0.1s ease-in;
-  -o-transition: background 0.1s ease-in;
-  -webkit-transition: background 0.1s ease-in;
-  transition: background 0.1s ease-in;
-}
-
-#scibloger_outline_wrapper li:hover > ul.l4{
-  z-index: 5;
-  -moz-transition: background 0.1s ease-out;
-  -ms-transition: background 0.1s ease-out;
-  -o-transition: background 0.1s ease-out;
-  -webkit-transition: background 0.1s ease-out;
-  transition: background 0.1s ease-out;
-}
-#scibloger_outline_wrapper li > ul.l4:hover {
-  -moz-transition: background 0.1s ease-in;
-  -ms-transition: background 0.1s ease-in;
-  -o-transition: background 0.1s ease-in;
-  -webkit-transition: background 0.1s ease-in;
-  transition: background 0.1s ease-in;
+  -moz-transform: scaleY(1);
+  -ms-transform: scaleY(1);
+  -o-transform: scaleY(1);
+  -webkit-transform: scaleY(1);
+  transform: scaleY(1);
 }
 

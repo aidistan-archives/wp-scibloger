@@ -1,0 +1,15 @@
+<h3>MathJax</h3>
+$$
+\begin{aligned}
+\nabla \cdot \mathbf{E} &amp; = \frac{\rho}{\varepsilon_0} \\
+\nabla \cdot \mathbf{B} &amp; = 0 \\
+\nabla \times \mathbf{E} &amp; = -\frac{\partial \mathbf{B}}{\partial t} \\
+\nabla \times \mathbf{B} &amp; = \mu_0 \mathbf{J} + \mu_0 \varepsilon_0 \frac{\partial \mathbf{E}}{\partial t}
+\end{aligned}
+$$
+
+<h3>Outline</h3>
+<div style="visibility: hidden;">
+<h4>h4</h4><h5>h5</h5><h5>h5</h5><h6>h6</h6><h6>h6</h6><h6>h6</h6><h6>h6</h6>
+<h4>h4</h4><h4>h4</h4><h4>h4</h4>
+</div>

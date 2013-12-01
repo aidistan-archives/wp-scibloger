@@ -11,8 +11,9 @@ class SciBloger_Outline {
   const OPTION_POSITION = 'scibloger_outline_position';
   const OPTION_THEME    = 'scibloger_outline_theme';
 
-  var $mIsYes;
+  var $mYes;
   var $mPosition;
+  var $mTheme;
   var $mIsSingle = false; // Only show on posts
 
   var $mOutline_content = "";
@@ -37,8 +38,13 @@ class SciBloger_Outline {
   }
 
   function init_options() {
+    // Defaults
     if(!get_option(self::OPTION_POSITION)) add_option( self::OPTION_POSITION, array("top"=>"20%", "right"=>"10px") );
-    if(!get_option(self::OPTION_THEME)) add_option( self::OPTION_THEME, 'gray' );
+    if(!get_option(self::OPTION_THEME)) add_option( self::OPTION_THEME, 'basic' );
+
+    // Load
+    $this -> mYes = get_option( ScienceBlogHelper::OPTION_OUTLINE );
+    $this -> mPosition = get_option(self::OPTION_POSITION);
   }
 
   function check_single() {
@@ -47,25 +53,24 @@ class SciBloger_Outline {
   }
 
   function register_style() {
-    $theme = get_option( self::OPTION_THEME );
     wp_register_style( 'scibloger_outline_basic', plugins_url( 'stylesheets/outline.css', __FILE__  ) );
-    wp_register_style( 'scibloger_outline_theme', plugins_url( "stylesheets/outline_$theme.css", __FILE__  ), array('scibloger_outline_basic') );
+
+    $this -> mTheme = get_option( self::OPTION_THEME );
+    if($this -> mTheme != 'basic')
+      wp_register_style( 'scibloger_outline_theme', plugins_url( 'stylesheets/outline_'.$this -> mTheme.'.css', __FILE__  ), array('scibloger_outline_basic') );
   }
 
   function parse_shortcode( $atts ) {
-    $this -> mPosition = get_option(self::OPTION_POSITION);
-    $this -> mIsYes = get_option( ScienceBlogHelper::OPTION_OUTLINE );
-
     extract( shortcode_atts( array(
-      'show'  => $this -> mIsYes,
+      'show'  => $this -> mYes,
       'right' => $this -> mPosition['right'],
       'top'=> $this -> mPosition['top']
     ), $atts ) );
 
     if (in_array($show, array('Yes','yes','Y','y','On','on','True','true','T','t')))
-      $this -> mIsYes = true;
+      $this -> mYes = 'yes';
     else
-      $this -> mIsYes = false;
+      $this -> mYes = 'no';
 
     $this -> mPosition['right'] = $right;
     $this -> mPosition['top']   = $top;
@@ -74,7 +79,7 @@ class SciBloger_Outline {
 
   function add_header_anchors($content) {
     // Off
-    if( !($this -> mIsSingle) || !($this -> mIsYes))
+    if( !($this -> mIsSingle) || ($this -> mIsYes == 'no') )
       return $content;
 
     // Main regexp
@@ -126,7 +131,8 @@ class SciBloger_Outline {
 
     // Load CSS styles
     wp_enqueue_style( 'scibloger_outline_basic' );
-    wp_enqueue_style( 'scibloger_outline_theme' );
+    if($this -> mTheme != 'basic')
+      wp_enqueue_style( 'scibloger_outline_theme' );
 
     // Main html codes
     extract($this -> mPosition);
@@ -219,6 +225,9 @@ class SciBloger_Outline {
   function setting_callback_theme(){
     ?>
     <select name="<?php echo self::OPTION_THEME; ?>">
+      <option value="basic"
+        <?php if(get_option(self::OPTION_THEME)=='basic') echo 'selected'; ?>
+        >Basic</option>
       <option value="gray"
         <?php if(get_option(self::OPTION_THEME)=='gray') echo 'selected'; ?>
         >Gray space</option>
@@ -226,6 +235,18 @@ class SciBloger_Outline {
       <?php if(get_option(self::OPTION_THEME)=='metro') echo 'selected'; ?>
         >Metro era</option>
     </select>
+    <table style="text-align:center;"><tbody>
+      <tr>
+        <td>Basic</td>
+        <td>Gray</td>
+        <td>Metro</td>
+      </tr>
+      <tr>
+        <td><img src="<?php echo plugins_url( 'images/outline-basic.png', __FILE__  ); ?>" width="150"></td>
+        <td><img src="<?php echo plugins_url( 'images/outline-gray.png', __FILE__  ); ?>" width="150"></td>
+        <td><img src="<?php echo plugins_url( 'images/outline-metro.png', __FILE__  ); ?>" width="150"></td>
+      </tr>
+    </tbody></table>
     <?php
   }
 }
