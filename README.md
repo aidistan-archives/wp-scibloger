@@ -3,7 +3,6 @@
 * Formal name: <b>Sci</b>ence <b>Blog</b> Help<b>er</b>
 * Project name: aidi-wp-scibloger
 * Current status: **Maintaining**
-* Start date: Nov 25, 2013
 * Useful resources
 	* Github page
 		* [https://github.com/aidistan/aidi-wp-scibloger](https://github.com/aidistan/aidi-wp-scibloger)
