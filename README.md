@@ -2,11 +2,10 @@
 
 * Project name: aidi-wp-scibloger
 * Current status: **Maintaining**
-* Start date: Nov 11, 2013
+* Start date: Nov 25, 2013
 * Useful resources
 	* [Github page](https://github.com/aidistan/aidi-wp-scibloger)
-	* [Plugin page](http://aidistan.github.io/aidi-wp-scibloger)
-	* [Plugin page on WordPress](http://wordpress.org/plugins/scibloger/)
+	* [Plugin page](http://wordpress.org/plugins/scibloger/)
 	* [SVN repository](http://plugins.svn.wordpress.org/scibloger/)
 
 
