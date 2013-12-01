@@ -5,9 +5,12 @@
 * Current status: **Maintaining**
 * Start date: Nov 25, 2013
 * Useful resources
-	* Github page: [https://github.com/aidistan/aidi-wp-scibloger](https://github.com/aidistan/aidi-wp-scibloger)
-	* Plugin page: [http://wordpress.org/plugins/scibloger/](http://wordpress.org/plugins/scibloger/)
-	* SVN repository:[http://plugins.svn.wordpress.org/scibloger/](http://plugins.svn.wordpress.org/scibloger/)
+	* Github page
+		* [https://github.com/aidistan/aidi-wp-scibloger](https://github.com/aidistan/aidi-wp-scibloger)
+	* Plugin page
+		* [http://wordpress.org/plugins/scibloger/](http://wordpress.org/plugins/scibloger/)
+	* SVN repository
+		* [http://plugins.svn.wordpress.org/scibloger/](http://plugins.svn.wordpress.org/scibloger/)
 
 
 ## Description
