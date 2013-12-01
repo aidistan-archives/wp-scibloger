@@ -1,6 +1,7 @@
-# **Sci**ence **Blog** Help**er**
+# SciBloger
 
 * Project name: aidi-wp-scibloger
+* Formal name: **Sci**ence **Blog** Help**er**
 * Current status: **Maintaining**
 * Start date: Nov 25, 2013
 * Useful resources
