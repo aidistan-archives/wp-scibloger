@@ -36,7 +36,7 @@ class ScienceBlogHelper {
 
     // Load modules
     define('BASE_PATH', dirname(__FILE__));
-    require BASE_PATH . '/lib/Mobile_Detect.php';
+    require BASE_PATH . '/libs/Mobile_Detect.php';
     require BASE_PATH . '/mathjax.php';
     require BASE_PATH . '/outline.php';
 

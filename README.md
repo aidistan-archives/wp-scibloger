@@ -2,7 +2,7 @@
 
 * Formal name: <b>Sci</b>ence <b>Blog</b> Help<b>er</b>
 * Project name: aidi-wp-scibloger
-* Current status: **Maintaining**
+* Current status: **Developing**
 * Useful resources
 	* Github page
 		* [https://github.com/aidistan/aidi-wp-scibloger](https://github.com/aidistan/aidi-wp-scibloger)
@@ -20,7 +20,7 @@ Refer to [readme.txt](readme.txt), a standard WordPress plugin README, for more 
 
 ## Compared to SVN
 
-This git repository updates more frequently, while the SVN repository only used when a new stable released.
+This git repository updates more frequently and is used to update /truck in the SVN repository when a new stable released.
 
 
 ## For contributors

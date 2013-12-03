@@ -1,3 +1,5 @@
+// To be added into one post in your WordPress
+
 <h3>MathJax</h3>
 $$
 \begin{aligned}

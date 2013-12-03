@@ -13,23 +13,13 @@ class SciBloger_Outline {
 
   var $mYes;
   var $mPosition;
-  var $mTheme;
-  var $mIsSingle = false; // Only show on posts
-
-  var $mOutline_content = "";
-  var $mOutline_stack   = array();
+  var $mStack;
+  var $mContent;
 
   function __construct() {
-
-    // Init options
     $this -> init_options();
 
-    // Actions & filters by order
-    add_action( 'wp', array($this, 'check_single') );
-    add_action( 'wp_enqueue_scripts', array($this, 'register_script') );
-    add_shortcode( 'scibloger_outline', array($this, 'parse_shortcode') );
-    add_filter( 'the_content', array($this, 'add_header_anchors'), 500);
-    add_action( 'wp_footer', array($this, 'add_outline') );
+    add_action( 'wp', array($this, 'init_module') );
 
     if ( is_admin() && get_option( ScienceBlogHelper::OPTION_MODE ) == 'maximal' ){
       add_action( 'admin_menu', array($this, 'add_settings_page') );
@@ -47,23 +37,32 @@ class SciBloger_Outline {
     $this -> mPosition = get_option(self::OPTION_POSITION);
   }
 
-  function check_single() {
-    if(is_single())
-      $this -> mIsSingle = true;
+  function init_module() {
+    // Only show on single post
+    if(is_single()) {
+      add_action( 'wp_enqueue_scripts', array($this, 'register_script') );
+      add_filter( 'the_content', array($this, 'add_header_anchors'), 500);
+      add_shortcode( 'scibloger_outline', array($this, 'parse_shortcode') );
+    }
   }
 
   function register_script() {
     global $ScienceBlogHelper;
+
+    // Javascripts
     if( $ScienceBlogHelper -> mDetect -> isMobile() )
-      wp_register_script( 'scibloger_outline_js', plugins_url( 'js/outline_mobile.js', __FILE__  ), array( 'jquery' ) );      
+      wp_register_script( 'scibloger_outline', plugins_url( 'javascripts/outline_touch.js', __FILE__  ), array( 'jquery' ) );      
     else
-      wp_register_script( 'scibloger_outline_js', plugins_url( 'js/outline.js', __FILE__  ), array( 'jquery' ) );
+      wp_register_script( 'scibloger_outline', plugins_url( 'javascripts/outline_mouse.js', __FILE__  ), array( 'jquery' ) );
 
-    wp_register_style( 'scibloger_outline_basic', plugins_url( 'css/outline.css', __FILE__  ) );
-
-    $this -> mTheme = get_option( self::OPTION_THEME );
-    if($this -> mTheme != 'basic')
-      wp_register_style( 'scibloger_outline_theme', plugins_url( 'css/outline_'.$this -> mTheme.'.css', __FILE__  ), array('scibloger_outline_basic') );
+    // Stylesheets
+    $theme = get_option( self::OPTION_THEME );
+    if($theme != 'basic') {
+      wp_register_style( 'scibloger_outline_basic', plugins_url( 'stylesheets/outline.css', __FILE__  ) );
+      wp_register_style( 'scibloger_outline', plugins_url( "stylesheets/outline_$theme.css", __FILE__  ), array('scibloger_outline_basic') );
+    } else {
+      wp_register_style( 'scibloger_outline', plugins_url( 'stylesheets/outline.css', __FILE__  ) );
+    }
   }
 
   function parse_shortcode( $atts ) {
@@ -72,7 +71,6 @@ class SciBloger_Outline {
       'right' => $this -> mPosition['right'],
       'top'=> $this -> mPosition['top']
     ), $atts ) );
-
     if (in_array($show, array('Yes','yes','Y','y','On','on','True','true','T','t')))
       $this -> mYes = 'yes';
     else
@@ -85,45 +83,46 @@ class SciBloger_Outline {
 
   function add_header_anchors($content) {
     // Off
-    if( !($this -> mIsSingle) || ($this -> mIsYes == 'no') )
+    if( $this -> mYes == 'no' )
       return $content;
 
-    // Main regexp
+    // Regexp
     preg_match_all('/<h(\d)[^>]*>(.*)<\/h\d>/isU', $content, $mat);
-    if ( count($mat[0]) <= 1) {
-      // If no more than one header
+    if ( count($mat[0]) <= 1)
       return $content;
-    } else {
-      // Otherwise, need to create outline
-      $list_items = array();
-      array_push($this -> mOutline_stack, '2');
-      for($i = 0; $i < count($mat[0]); $i++) {
-        // Add list content
-        array_push($list_items, 
-          $this -> do_outline_stack($mat[1][$i], false) . 
-          '<a href="#scibloger_outline_a'.$i.'">'.$mat[2][$i].'</a>');
 
-        // Replace post content
-        $content = str_replace($mat[0][$i], $mat[0][$i].'<a name="scibloger_outline_a'.$i.'"></a>', $content);
-      }
-      array_push($list_items, $this -> do_outline_stack('2', true));
-      $this -> mOutline_content = join("\n", $list_items);
-      return $content;
+    // Create anchors
+    $list_items = array();
+    $this -> mStack = array('2');
+    for($i = 0; $i < count($mat[0]); $i++) {
+      // Add list content
+      array_push($list_items, 
+        $this -> do_outline_stack($mat[1][$i], false) . 
+        '<a href="#scibloger_outline_a'.$i.'">'.$mat[2][$i].'</a>');
+
+      // Replace post content
+      $content = str_replace($mat[0][$i], $mat[0][$i].'<a name="scibloger_outline_a'.$i.'"></a>', $content);
     }
+    array_push($list_items, $this -> do_outline_stack('2', true));
+    $this -> mContent = join("\n", $list_items);
+
+    // Add outline at footer
+    add_action( 'wp_footer', array($this, 'add_outline') );
+    return $content;
   }
 
   function do_outline_stack($l, $isEnd) {
     $str = '';
-    if(end($this -> mOutline_stack) < $l){
-      $str .= '<ul class="l'.count($this -> mOutline_stack).'"><li>';
-      array_push($this -> mOutline_stack, $l);
-    } elseif (end($this -> mOutline_stack) == $l){
+    if(end($this -> mStack) < $l){
+      $str .= '<ul class="l'.count($this -> mStack).'"><li>';
+      array_push($this -> mStack, $l);
+    } elseif (end($this -> mStack) == $l){
       if(!$isEnd)
         $str .= '</li><li>';
     } else {
-      while(end($this -> mOutline_stack) > $l){
+      while(end($this -> mStack) > $l){
         $str .='</li></ul>';
-        array_pop($this -> mOutline_stack);
+        array_pop($this -> mStack);
       }
       $str .= $this -> do_outline_stack($l, $isEnd);
     }
@@ -131,21 +130,15 @@ class SciBloger_Outline {
   }
 
   function add_outline() {
-    // Off or no need
-    if( $this -> mOutline_content == "")
-      return;
-
     // Load CSS styles
-    wp_enqueue_script( 'scibloger_outline_js' );
-    wp_enqueue_style( 'scibloger_outline_basic' );
-    if($this -> mTheme != 'basic')
-      wp_enqueue_style( 'scibloger_outline_theme' );
+    wp_enqueue_script( 'scibloger_outline' );
+    wp_enqueue_style( 'scibloger_outline' );
 
     // Main html codes
     extract($this -> mPosition);
     ?>
     <div id="scibloger_outline_wrapper" style="<?php echo "right:$right;top:$top;"; ?>">
-      <div class="trigger">&lt;</div><?php echo $this -> mOutline_content; ?>
+      <div class="trigger">&lt;</div><?php echo $this -> mContent; ?>
     </div>
     <?php
   }
