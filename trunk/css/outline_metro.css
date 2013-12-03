@@ -15,22 +15,22 @@
 }
 
 /* Level 1 */
-#scibloger_outline_wrapper:hover ul.l1 {
+#scibloger_outline_wrapper.pop ul.l1 {
   background: rgb(234, 66, 138);
 }
 
 /* Level 2 */
-#scibloger_outline_wrapper li:hover > ul.l2{
+#scibloger_outline_wrapper ul.l2.pop{
   background: rgb(127, 206, 15);
 }
 
 /* Level 3 */
-#scibloger_outline_wrapper li:hover > ul.l3{
+#scibloger_outline_wrapper ul.l3.pop{
   background: rgb(245, 167, 13);
 }
 
 /* Level 4 */
-#scibloger_outline_wrapper li:hover > ul.l4{
+#scibloger_outline_wrapper ul.l4.pop{
   background: rgb(153, 98, 193);
 }
 

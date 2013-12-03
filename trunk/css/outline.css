@@ -18,7 +18,7 @@
   /* Animation */
   visibility: visible;
 }
-#scibloger_outline_wrapper:hover .trigger{
+#scibloger_outline_wrapper.pop .trigger{
   visibility: collapse;
 }
 
@@ -90,21 +90,9 @@
 
 #scibloger_outline_wrapper ul > li > a {
   color: rgba(255, 255, 255);
-  -moz-transition: color 0.1s ease-out;
-  -ms-transition: color 0.1s ease-out;
-  -o-transition: color 0.1s ease-out;
-  -webkit-transition: color 0.1s ease-out;
-  transition: color 0.1s ease-out;
-}
-#scibloger_outline_wrapper ul:hover > li > a {
-  -moz-transition: color 0.1s ease-in;
-  -ms-transition: color 0.1s ease-in;
-  -o-transition: color 0.1s ease-in;
-  -webkit-transition: color 0.1s ease-in;
-  transition: color 0.1s ease-in;
 }
 
-#scibloger_outline_wrapper:hover ul.l1 {
+#scibloger_outline_wrapper.pop ul.l1 {
   right: 0px;
   top: 0px;
 
@@ -115,7 +103,7 @@
   transform: scaleY(1);
 }
 
-#scibloger_outline_wrapper li:hover > ul{
+#scibloger_outline_wrapper ul.pop{
   right: 100%;
   top: -5px;
   margin-right: -5px;

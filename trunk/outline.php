@@ -26,7 +26,7 @@ class SciBloger_Outline {
 
     // Actions & filters by order
     add_action( 'wp', array($this, 'check_single') );
-    add_action( 'wp_enqueue_scripts', array($this, 'register_style') );
+    add_action( 'wp_enqueue_scripts', array($this, 'register_script') );
     add_shortcode( 'scibloger_outline', array($this, 'parse_shortcode') );
     add_filter( 'the_content', array($this, 'add_header_anchors'), 500);
     add_action( 'wp_footer', array($this, 'add_outline') );
@@ -52,12 +52,18 @@ class SciBloger_Outline {
       $this -> mIsSingle = true;
   }
 
-  function register_style() {
-    wp_register_style( 'scibloger_outline_basic', plugins_url( 'stylesheets/outline.css', __FILE__  ) );
+  function register_script() {
+    global $ScienceBlogHelper;
+    if( $ScienceBlogHelper -> mDetect -> isMobile() )
+      wp_register_script( 'scibloger_outline_js', plugins_url( 'js/outline_mobile.js', __FILE__  ), array( 'jquery' ) );      
+    else
+      wp_register_script( 'scibloger_outline_js', plugins_url( 'js/outline.js', __FILE__  ), array( 'jquery' ) );
+
+    wp_register_style( 'scibloger_outline_basic', plugins_url( 'css/outline.css', __FILE__  ) );
 
     $this -> mTheme = get_option( self::OPTION_THEME );
     if($this -> mTheme != 'basic')
-      wp_register_style( 'scibloger_outline_theme', plugins_url( 'stylesheets/outline_'.$this -> mTheme.'.css', __FILE__  ), array('scibloger_outline_basic') );
+      wp_register_style( 'scibloger_outline_theme', plugins_url( 'css/outline_'.$this -> mTheme.'.css', __FILE__  ), array('scibloger_outline_basic') );
   }
 
   function parse_shortcode( $atts ) {
@@ -130,6 +136,7 @@ class SciBloger_Outline {
       return;
 
     // Load CSS styles
+    wp_enqueue_script( 'scibloger_outline_js' );
     wp_enqueue_style( 'scibloger_outline_basic' );
     if($this -> mTheme != 'basic')
       wp_enqueue_style( 'scibloger_outline_theme' );

@@ -17,6 +17,6 @@
 }
 
 /* All lists */
-#scibloger_outline_wrapper:hover ul{
+#scibloger_outline_wrapper.pop ul{
   background: #ccc;
 }
