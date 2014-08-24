@@ -70,6 +70,9 @@ No question by now.
 
 == Changelog ==
 
+= 0.2.6 =
+* Add an option page for MathJax
+
 = 0.2.5 =
 * Use [Mobile_Detect](https://github.com/serbanghita/Mobile-Detect) to detect whether isMobile.
 * Load different CSSs dependent on your device.
