@@ -3,8 +3,8 @@ Contributors: aidistan
 Donate link: http://www.crcf.org.cn/1030/juankuan.asp
 Tags: scibloger, science, helper, post, content, latex
 Requires at least: 3.3
-Tested up to: 3.7.1
-Stable tag: 0.2.5
+Tested up to: 3.9.2
+Stable tag: 0.2.6
 License: MIT License
 
 Intended to help people build blogs and write posts on science. Provide functions like LaTeX support, post outline generation and so on.
