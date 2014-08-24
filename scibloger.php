@@ -6,7 +6,7 @@
 Plugin Name: Science Blog Helper
 Plugin URI: http://wordpress.org/plugins/scibloger/
 Description: Intended to help people build blogs and write posts on science.
-Version: 0.2.5
+Version: 0.2.6
 Author: aidistan
 Author URI: http://aidi.no-ip.org
 
