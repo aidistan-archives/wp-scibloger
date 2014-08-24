@@ -10,9 +10,12 @@ $$
 \end{aligned}
 $$
 
+<h4>mhchem.js</h4>
+$$\ce{H2O + HCl<=>H3O+ + Cl-}$$
+$$\ce{A\bond{-}B\bond{=}C\bond{#}D}$$
+
 <h3>Outline</h3>
 <div style="visibility: hidden;">
 <h4>h4</h4><h5>h5</h5><h5>h5</h5><h6>h6</h6><h6>h6</h6><h6>h6</h6><h6>h6</h6>
 <h4>h4</h4><h4>h4</h4><h4>h4</h4>
 </div>
-
