@@ -105,7 +105,7 @@ class ScienceBlogHelper {
         do_settings_sections( self::MENU_SLUG );
         submit_button('Save', 'primary', 'submit', false);
         ?>
-        <input type="reset" name="reset" id="reset" class="button button-primary" value="Reset" style="margin:10px 0 0 10px;"/>
+        <input id="reset" class="button" type="reset" name="reset" value="Reset" style="margin: 0 0 0 10px;"/>
       </form>
     </div>
     <?php
@@ -187,7 +187,7 @@ class ScienceBlogHelper {
   function section_callback_mathjax() {
     $this -> mMathJax -> insert_js_script();
     ?>
-    <p>This function is realised by importing copy of **MathJax**, an open source JavaScript display engine for mathematics that works in all browsers, from their CDN Service.
+    <p>This function is realised by importing copy of <strong>MathJax</strong>, an open source JavaScript display engine for mathematics that works in all browsers, from their CDN Service.
     Following are two simple use cases:</p>
     <ol>
       <li><b>\<b></b>(...\<b></b>)</b> for in-line math: \( E = mc^2 \) and \( e^{\pi i} + 1 = 0 \)</li>

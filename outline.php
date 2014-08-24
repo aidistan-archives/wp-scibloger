@@ -164,7 +164,7 @@ class SciBloger_Outline {
         do_settings_sections( self::MENU_SLUG );
         submit_button('Save', 'primary', 'submit', false);
         ?>
-        <input type="reset" name="reset" id="reset" class="button button-primary" value="Reset" style="margin:10px 0 0 10px;"/>
+        <input id="reset" class="button" type="reset" name="reset" value="Reset" style="margin: 0 0 0 10px;"/>
       </form>
     </div>
     <?php
