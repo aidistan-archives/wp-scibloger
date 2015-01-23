@@ -2,7 +2,7 @@
 
 * Formal name: <b>Sci</b>ence <b>Blog</b> Help<b>er</b>
 * Project name: aidi-wp-scibloger
-* Current status: <span style="color:red;">Deprecated</span>
+* Current status: **Deprecated**
 * Useful resources
   * Github page
     * [https://github.com/aidistan/aidi-wp-scibloger](https://github.com/aidistan/aidi-wp-scibloger)
